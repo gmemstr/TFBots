@@ -4,9 +4,8 @@ import json
 import time
 
 def Calculate():
-	today = time.strftime("%x")
 	res_string = ""
-	stocks = {today:{}}
+	stocks = {}
 	with open('bots.json') as json_file:
 		bots_json = json.load(json_file)
 	
@@ -28,15 +27,21 @@ def Calculate():
 		
 		res_string = res_string + "\n" + site + "'s value: " + str(round(bots_price, 2))
 		
-		stocks[today][site] = round(bots_price, 2)
+		stocks[site] = round(bots_price, 2)
 		
 	Cache(stocks)
 	return res_string
 	
 def Cache(stocks):
+	today = time.strftime("%x")
 	print(stocks)
 	
+	with open('cache.json') as cache:
+		old = json.load(cache)
+		
+	old[today] = stocks
+	
 	with open('cache.json', 'w') as cache:
-		json.dump(stocks, cache, indent = 4)
+		json.dump(old, cache, indent = 4)
 	
 print(Calculate())
