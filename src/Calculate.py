@@ -6,7 +6,7 @@ import time
 def Calculate():
 	res_string = ""
 	stocks = {}
-	with open('bots.json') as json_file:
+	with open("json/bots.json") as json_file:
 		bots_json = json.load(json_file)
 	
 	for site in bots_json:
@@ -36,12 +36,12 @@ def Cache(stocks):
 	today = time.strftime("%x")
 	print(stocks)
 	
-	with open('cache.json') as cache:
+	with open('json/cache.json') as cache:
 		old = json.load(cache)
 		
 	old[today] = stocks
 	
-	with open('cache.json', 'w') as cache:
+	with open("json/cache.json", "w") as cache:
 		json.dump(old, cache, indent = 4)
 	
 print(Calculate())

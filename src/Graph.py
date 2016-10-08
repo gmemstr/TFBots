@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import json
 
-with open("cache.json") as cache_file:
+with open("json/cache.json") as cache_file:
 	cache_json = json.load(cache_file)
 
 def GraphStocks(site):
@@ -21,6 +21,6 @@ def GraphStocks(site):
 	plt.xticks(x,history)
 	plt.plot(x,prices,"g")
 	
-	plt.savefig(site + ".png")
+	plt.savefig("graphs/" + site + ".png")
 
-GraphStocks("stn")
+GraphStocks("market")
