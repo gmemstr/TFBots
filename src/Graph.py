@@ -7,11 +7,12 @@ with open("json/cache.json") as cache_file:
 
 def GraphStocks(site="scrap"):
 	plt.figure(1)
+	plt.clf()
 	history = []
 	prices = []
 	i = 0
 	for time in sorted(cache_json):
-		print("Result found at " + time)
+		# print("Result found at " + time)
 		history.append(time)
 		prices.append(cache_json[time][site])
 		i = i + 1
@@ -24,5 +25,3 @@ def GraphStocks(site="scrap"):
 	
 	print("Saved as graphs/" + site + ".png")
 	plt.savefig("graphs/" + site + ".png")
-
-GraphStocks(sys.argv[1])

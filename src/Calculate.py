@@ -2,6 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 import json
 import time
+import threading
 
 def Calculate():
 	res_string = ""
@@ -16,7 +17,7 @@ def Calculate():
 			bots_individual = bots_individual + bots_id + ","
 	
 		q = requests.get("https://backpack.tf/api/IGetUsers/v3/?steamids=" + bots_individual)
-		print("\n" + site + " " +q.url)
+		# print("\n" + site + " " +q.url)
 		for bot in q.json()['response']['players']:
 			try:
 				value = q.json()['response']['players'][bot]['backpack_value']['440']
@@ -34,7 +35,7 @@ def Calculate():
 	
 def Cache(stocks):
 	today = time.strftime("%x")
-	print(stocks)
+	# print(stocks)
 	
 	with open('json/cache.json') as cache:
 		old = json.load(cache)
@@ -44,4 +45,11 @@ def Cache(stocks):
 	with open("json/cache.json", "w") as cache:
 		json.dump(old, cache, indent = 4)
 	
-print(Calculate())
+   
+def f():
+	print("Fetching new values @ " + time.strftime("%x"))
+	Calculate()
+	# call f() again in 60 seconds
+	threading.Timer(86400, f).start()
+
+f()
