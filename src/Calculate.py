@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 import json
 import time
 import threading
+import Graph
 
 def Calculate():
 	res_string = ""
@@ -29,6 +30,7 @@ def Calculate():
 		res_string = res_string + "\n" + site + "'s value: " + str(round(bots_price, 2))
 		
 		stocks[site] = round(bots_price, 2)
+		Graph.GraphStocks(site)
 		
 	Cache(stocks)
 	return res_string
