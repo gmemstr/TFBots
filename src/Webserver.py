@@ -17,4 +17,4 @@ def FetchGraph(site):
 if __name__ == '__main__':
 
 	app.run()
-	# app.run(host='0.0.0.0') # Make server purblicly visible
+	# app.run(host='0.0.0.0') # Make server publicly visible

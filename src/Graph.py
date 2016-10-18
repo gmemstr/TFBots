@@ -2,10 +2,11 @@ import matplotlib.pyplot as plt
 import json
 import sys
 
-with open("json/cache.json") as cache_file:
-	cache_json = json.load(cache_file)
-
 def GraphStocks(site):
+	# So that the cache is actually refreshed for the graphs
+	with open("json/cache.json") as cache_file:
+		cache_json = json.load(cache_file)
+	
 	plt.figure(1)
 	plt.clf()
 	history = []

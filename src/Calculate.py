@@ -51,7 +51,7 @@ def Cache(stocks):
 def f():
 	print("Fetching new values @ " + time.strftime("%x"))
 	Calculate()
-	# call f() again in 60 seconds
+	# call f() again in 24 hours
 	threading.Timer(86400, f).start()
 
 f()
