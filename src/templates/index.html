@@ -17,12 +17,15 @@
 
 <body>
 	<a class="github-fork-ribbon" href="https://github.com/gmemstr/TFBots" title="Fork me on GitHub">Fork me on GitHub</a>
-	<h1>Trading Bot Backpack Values</h1>
-	<p>This project is still in development (especially the webserver
-	stuff). All prices are in raw metal and fetched from backpack.tf at 9PM
-	every day.</p>
-	<img src="{{ url_for('FetchGraph', site = 'market') }}">
-	<img src="{{ url_for('FetchGraph', site = 'scrap') }}">
-	<img src="{{ url_for('FetchGraph', site = 'stn') }}">
+	<div class="row">
+		<h1>Trading Bot Backpack Values</h1>
+		<p>This project is still in development (especially the webserver
+		stuff). All prices are in raw metal and fetched from backpack.tf every 24 hours.</p>
+	</div>
+	<div class="row">
+		<img src="{{ url_for('FetchGraph', site = 'market') }}">
+		<img src="{{ url_for('FetchGraph', site = 'scrap') }}">
+		<img src="{{ url_for('FetchGraph', site = 'stn') }}">
+	</div>
 </body>
 </html>

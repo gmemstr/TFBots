@@ -12,7 +12,7 @@ def ServeIndex():
 
 @app.route('/graphs/<site>')
 def FetchGraph(site):
-	return send_from_directory('graphs', site + ".png")
+	return send_from_directory('graphs', site + ".svg")
 
 if __name__ == '__main__':
 

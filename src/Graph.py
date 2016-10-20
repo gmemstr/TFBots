@@ -24,5 +24,5 @@ def GraphStocks(site):
 	plt.xticks(x,history)
 	plt.plot(x,prices,"g")
 	
-	print("Saved as graphs/" + site + ".png")
-	plt.savefig("graphs/" + site + ".png")
+	print("Saved as graphs/" + site + ".svg")
+	plt.savefig("graphs/" + site + ".svg")
