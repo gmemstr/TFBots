@@ -1,23 +1,25 @@
-# TFBots (graphs branch)
+# TFBots
 
-### Still revising README, feel free to open issues with questions
+[Live Website](http://tfbots.trade)
 
-Calculates estimates backpack values of TF2 trading bots.
+Calculates & graphs estimated backpack values of TF2 trading bots over time.
 
 ### Requirements
 
 **Requires Python 3.x or higher. 2.x is not officially supported.**
 
 Just run `pip install -r requirements.txt` and pip will install the required 
-Python libraries. (`requests` and `matplotlib`)
+Python libraries. (`requests`, `matplotlib` and `flask`)
 
 ### Running
 
 `python Calculate.py` will fetch all the data from backpack.tf
-and cache it in cache.json.
+and cache it in cache.json, then run the caching scripts. It will
+then start a thread that auto reruns the script every 24 hours.
 
-`python Graph.py (stn,scrap,market)` will graph the data of the
-specific website to a .png in src/graphs/.
+
+`python Webserver.py` will start up the webserver that will display
+the graphs is an organised fashion at `localhost:8080`. 
 
 ### Adding bots 
 
