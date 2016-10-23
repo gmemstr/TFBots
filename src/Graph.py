@@ -2,12 +2,16 @@ import matplotlib.pyplot as plt
 import json
 import sys
 
-def GraphStocks(site):
-	# So that the cache is actually refreshed for the graphs
+def GetCache():
 	with open("json/cache.json") as cache_file:
 		cache_json = json.load(cache_file)
+		
+	return cache_json
+
+def GraphStocks(site):
 	
-	plt.figure(1)
+	cache_json = GetCache()
+	plt.figure(1,figsize=(16,6.67),dpi=75)
 	plt.clf()
 	history = []
 	prices = []

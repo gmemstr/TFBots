@@ -23,9 +23,10 @@
 		stuff). All prices are in raw metal and fetched from backpack.tf every 24 hours.</p>
 	</div>
 	<div class="row">
-		<img src="{{ url_for('FetchGraph', site = 'market') }}">
-		<img src="{{ url_for('FetchGraph', site = 'scrap') }}">
-		<img src="{{ url_for('FetchGraph', site = 'stn') }}">
+	<p>Each image is a link to the fullsize SVG graph.</p>
+		<a href="/graphs/market"><img src="{{ url_for('FetchGraph', site = 'market') }}"></a>
+		<a href="/graphs/market"><img src="{{ url_for('FetchGraph', site = 'scrap') }}"></a>
+		<a href="/graphs/market"><img src="{{ url_for('FetchGraph', site = 'stn') }}"></a>
 	</div>
 </body>
 </html>

@@ -1,9 +1,9 @@
 import requests
-import xml.etree.ElementTree as ET
 import json
 import time
 import threading
 import Graph
+from Cache import Stash
 
 def Calculate():
 	res_string = ""
@@ -32,24 +32,12 @@ def Calculate():
 		stocks[site] = round(bots_price, 2)
 		Graph.GraphStocks(site)
 		
-	Cache(stocks)
+	Stash(stocks,"json/cache.json")
 	return res_string
 	
-def Cache(stocks):
-	today = time.strftime("%x")
-	# print(stocks)
-	
-	with open('json/cache.json') as cache:
-		old = json.load(cache)
-		
-	old[today] = stocks
-	
-	with open("json/cache.json", "w") as cache:
-		json.dump(old, cache, indent = 4)
-	
-   
+
 def f():
-	print("Fetching new values @ " + time.strftime("%x"))
+	print("F1ching new values @ " + time.strftime("%x"))
 	Calculate()
 	# call f() again in 24 hours
 	threading.Timer(86400, f).start()
