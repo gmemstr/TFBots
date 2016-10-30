@@ -16,7 +16,7 @@ def GraphStocks(site):
 	history = []
 	prices = []
 	i = 0
-	for time in sorted(cache_json):
+	for time in sorted(cache_json)[-10:]:
 		print("Result found at " + time)
 		history.append(time)
 		prices.append(cache_json[time][site])
@@ -27,6 +27,8 @@ def GraphStocks(site):
 	x = range(i)
 	plt.xticks(x,history)
 	plt.plot(x,prices,"g")
-	
+
+	plt.ylim(0)
 	print("Saved as graphs/" + site + ".svg")
 	plt.savefig("graphs/" + site + ".svg")
+	

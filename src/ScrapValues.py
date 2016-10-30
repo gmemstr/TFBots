@@ -2,7 +2,7 @@ import requests
 import json
 from Cache import Stash
 
-backpacktf_key = "57ed92acc440457ee15a878d"
+backpacktf_key = ""
 
 def RefinedValue():
 	q = requests.get("https://backpack.tf/api/IGetCurrencies/v1?key=" + backpacktf_key)
@@ -13,5 +13,3 @@ def RefinedValue():
 		prices[item] = val
 		
 	Stash(prices,"json/prices.json")
-	
-RefinedValue()
