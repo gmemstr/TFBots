@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-  <meta charset="utf-8">
 
-  <title>TFBots Stocks</title>
-  <meta name="description" content="TFBots Stocks">
-  <meta name="author" content="Gabriel Simmer">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
-<!--[if lt IE 9]>
+<head>
+    <meta charset="utf-8">
+
+    <title>TFBots Stocks</title>
+    <meta name="description" content="TFBots Stocks">
+    <meta name="author" content="Gabriel Simmer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"
+    />
+    <!--[if lt IE 9]>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
 <![endif]-->
-  <link rel="stylesheet" href="{{ url_for('static', filename = 'index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'index.css') }}">
 
 </head>
 
 <body>
-	<a class="github-fork-ribbon" href="https://github.com/gmemstr/TFBots" title="Fork me on GitHub">Fork me on GitHub</a>
-	<div class="row">
-		<h1>Trading Bot Backpack Values</h1>
-		<p>This project is still in development (especially the webserver
-		stuff). All prices are in raw metal and fetched from backpack.tf every 24 hours.</p>
-		<p><a href="/raw/cache">Raw cache</a> <a href="/raw/bots">Bot collection</a> <a href="/raw/prices">Currency history</a>
-		</div>
-	<div class="row">
-	<p>Each image is a link to the fullsize SVG graph.</p>
-		<a href="/graphs/market"><img src="{{ url_for('FetchGraph', site = 'market') }}"></a>
-		<a href="/graphs/market"><img src="{{ url_for('FetchGraph', site = 'scrap') }}"></a>
-		<a href="/graphs/market"><img src="{{ url_for('FetchGraph', site = 'stn') }}"></a>
-	</div>
+    <a class="github-fork-ribbon" href="https://github.com/gmemstr/TFBots" title="Fork me on GitHub">Fork me on GitHub</a>
+    <div class="row">
+        <h1>Trading Bot Backpack Values</h1>
+        <p>This project is still in development (especially the webserver stuff). All prices are in raw metal and fetched from
+            backpack.tf every 24 hours.</p>
+        <p><a href="/raw/cache">Raw cache</a> <a href="/raw/bots">Bot collection</a> <a href="/raw/prices">Currency history</a>
+    </div>
+    <div class="row">
+        <p>Each image is a link to the fullsize SVG graph.</p>
+        <a href="/graphs/market"><img src="{{ url_for('FetchGraph', site = 'market') }}"></a>
+        <a href="/graphs/scrap"><img src="{{ url_for('FetchGraph', site = 'scrap') }}"></a>
+        <a href="/graphs/stn"><img src="{{ url_for('FetchGraph', site = 'stn') }}"></a>
+    </div>
 </body>
+
 </html>
