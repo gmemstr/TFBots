@@ -1,14 +1,13 @@
-from flask import Flask, render_template, send_from_directory, jsonify
+from flask import Flask, render_template, send_from_directory, jsonify, request
 import Calculate
+from Analytics import Visitor
 
-import threading
-
-from os import environ
 app = Flask(__name__)
 
 
 @app.route('/')
 def ServeIndex():
+    Visitor(request.headers.get('User-Agent'), "PC", "PC")
     return render_template("index.html")
 
 

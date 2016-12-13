@@ -3,12 +3,16 @@ import json
 import sys
 import time
 import Cache
+import locale
+
+
+locale.setlocale(locale.LC_ALL, '')
 
 
 def InitGraphing():
     cache = Cache.Fetch("json/cache.json", "all")
     for site in cache[time.strftime("%x")]:
-            GraphStocks(site)
+        GraphStocks(site)
 
 
 def GraphStocks(site):
@@ -29,8 +33,10 @@ def GraphStocks(site):
 
     plt.ylabel('Value in refined metal')
     plt.title(site + " ref \nTotal: " + str(prices[i - 1]) + " refined " +
-              str(round(prices[i - 1] / keys, 2)) + " keys $" +
-              str(round(prices[i - 1] / metal, 2)) + " USD")
+              locale.format("%d", prices[i - 1] / keys, grouping=True) + " keys $" +
+
+              locale.format("%d", prices[i - 1] * metal, grouping=True) + " USD")
+
     x = range(i)
     plt.xticks(x, history)
     plt.plot(x, prices, "g")
