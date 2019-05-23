@@ -1,28 +1,46 @@
 import matplotlib.pyplot as plt
 import json
 import sys
+import time
+import Cache
+import locale
 
-with open("json/cache.json") as cache_file:
-	cache_json = json.load(cache_file)
 
-def GraphStocks(site="scrap"):
-	plt.figure(1)
-	history = []
-	prices = []
-	i = 0
-	for time in sorted(cache_json):
-		print("Result found at " + time)
-		history.append(time)
-		prices.append(cache_json[time][site])
-		i = i + 1
-	
-	plt.ylabel('Value in refined metal')
-	plt.title(site + " ref"	)
-	x = range(i)
-	plt.xticks(x,history)
-	plt.plot(x,prices,"g")
-	
-	print("Saved as graphs/" + site + ".png")
-	plt.savefig("graphs/" + site + ".png")
+locale.setlocale(locale.LC_ALL, '')
 
-GraphStocks(sys.argv[1])
+
+def InitGraphing():
+    cache = Cache.Fetch("json/cache.json", "all")
+    for site in cache[time.strftime("%x")]:
+        GraphStocks(site)
+
+
+def GraphStocks(site):
+    cache = Cache.Fetch("json/cache.json", "all")
+    keys = Cache.Fetch("json/prices.json")["keys"]
+    metal = Cache.Fetch("json/prices.json")["metal"]
+    plt.figure(1, figsize=(16, 6.67), dpi=75)
+    plt.clf()
+    history = []
+    prices = []
+    i = 0
+
+    for time in sorted(cache)[-10:]:
+        print("Result found at " + time)
+        history.append(time)
+        prices.append(cache[time][site])
+        i = i + 1
+
+    plt.ylabel('Value in refined metal')
+    plt.title(site + " ref \nTotal: " + str(prices[i - 1]) + " refined " +
+              locale.format("%d", prices[i - 1] / keys, grouping=True) + " keys $" +
+
+              locale.format("%d", prices[i - 1] * metal, grouping=True) + " USD")
+
+    x = range(i)
+    plt.xticks(x, history)
+    plt.plot(x, prices, "g")
+
+    plt.ylim(0)
+    print("Saved as graphs/" + site + ".svg")
+    plt.savefig("graphs/" + site + ".svg")
